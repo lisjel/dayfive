@@ -1,0 +1,53 @@
+<form #albumform="ngForm" (ngSubmit)="processForm(albumform)" fxLayout="column row" fxLayoutAlign="space-between start" fxLayoutGap="2vh">
+    <h2>Add a new album</h2>
+    
+    <mat-form-field>
+        <input matInput type="text" id="albumname" name="albumname" ngModel placeholder="Album Name" required #albumNameField="ngModel">
+
+        <mat-error *ngIf="albumNameField.invalid"> 
+            You need to enter the Album Name.
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput type="text" id="albumartist" name="albumartist" ngModel placeholder="Album Artist" required #albumArtistField="ngModel">
+
+        <mat-error *ngIf="albumArtistField.invalid"> 
+            You need to enter the artist's name.
+        </mat-error>
+    </mat-form-field>
+
+    <label id="rating-label">How was the album?</label>
+    <span class="rating">
+    <mat-radio-group aria-labelledby="rating-label" name="rating" ngModel>
+      <mat-radio-button name="rating" value="1">1</mat-radio-button>
+      <mat-radio-button name="rating" value="2">2</mat-radio-button>
+      <mat-radio-button name="rating" value="3">3</mat-radio-button>
+      <mat-radio-button name="rating" value="4">4</mat-radio-button>
+      <mat-radio-button name="rating" value="5">5</mat-radio-button>
+    </mat-radio-group>
+    </span>
+
+    <!-- insert star rating -->
+    <!-- <input type="radio" name="rating" value="1" ngModel> 1<br>
+    <input type="radio" name="rating" value="2" ngModel> 2<br>
+    <input type="radio" name="rating" value="3" ngModel> 3<br>
+    <input type="radio" name="rating" value="4" ngModel> 4<br>
+    <input type="radio" name="rating" value="5" ngModel> 5<br> -->
+
+    <!-- insert image upload -->
+    <!-- <input
+    type="file"
+    accept="image/*"
+    (change)="processFile(imageInput)"> -->
+
+    <mat-form-field>
+        <input matInput type="url" name="url" id="url"
+        placeholder="https://example.com"
+        pattern="https://.*" size="30"
+        ngModel #albumImageField="ngModel">
+    </mat-form-field>
+
+    <button mat-flat-button color="primary" type="submit" [disabled]="albumform.invalid"> Upload </button> 
+
+</form>

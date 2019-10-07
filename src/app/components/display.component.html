@@ -1,0 +1,26 @@
+
+<h2>My Album List</h2>
+
+<div *ngIf="display.length == 0">
+    <p>Your list is empty</p>
+</div>
+      
+<div *ngFor="let i of display" class="inv-line">
+    <div>
+    <img src="{{ i.albumImage }}" class="iconimage">
+    </div>
+
+    <div>
+    <div><strong>{{ i.albumName }}</strong></div>
+    <div>{{ i.albumArtist }}</div>
+    <div>{{ i.rating }} / 5</div>
+    </div>
+</div>
+
+<div>
+        <button mat-icon-button aria-label="Share" [disabled]="!sharable" (click)=shareNow()>
+                <mat-icon>share</mat-icon>
+        </button>  
+</div>
+
+      
